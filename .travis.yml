@@ -9,18 +9,18 @@ script:
   - docker run -e CI=true dev-test-image npm test
 
 after_success:
-  - docker build -t multi/client ./client
-  - docker build -t multi/server ./server
-  - docker build -t multi/worker ./worker
-  - docker build -t multi/nginx ./nginx
+  - docker build -t eminmdzd/multi-client ./client
+  - docker build -t eminmdzd/multi-server ./server
+  - docker build -t eminmdzd/multi-worker ./worker
+  - docker build -t eminmdzd/multi-nginx ./nginx
 
   # log into docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # push images to dockerhub
-  - docker push multi/client
-  - docker push multi/server
-  - docker push multi/worker
-  - docker push multi/nginx
+  - docker push eminmdzd/multi-client
+  - docker push eminmdzd/multi-server
+  - docker push eminmdzd/multi-worker
+  - docker push eminmdzd/multi-nginx
 
-  
+
